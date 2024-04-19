@@ -7,7 +7,9 @@
 |
 */
 
+import FripesController from '#controllers/fripes_controller'
 import HomeController from '#controllers/home_controller'
 import router from '@adonisjs/core/services/router'
 
 router.get('/', [HomeController, 'index'])
+router.get('/fripes', [FripesController, 'index'])
