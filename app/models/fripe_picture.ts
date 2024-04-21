@@ -1,27 +1,15 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export default class Address extends BaseModel {
+export default class FripePicture extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare line1: string
+  declare filename: string
 
   @column()
-  declare line2: string | null
-
-  @column()
-  declare line3: string | null
-
-  @column()
-  declare city: string
-
-  @column()
-  declare postCode: string
-
-  @column()
-  declare country: string
+  declare shortDescription: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
