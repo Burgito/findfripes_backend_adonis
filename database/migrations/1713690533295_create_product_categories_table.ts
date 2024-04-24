@@ -7,7 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('name', 64).notNullable()
-      table.string('icon_url').notNullable()
+      table.string('icon_filename').notNullable()
       table.string('short_description').notNullable()
       table.string('long_description').nullable()
 

@@ -13,3 +13,4 @@ import router from '@adonisjs/core/services/router'
 
 router.get('/', [HomeController, 'index'])
 router.get('/fripes', [FripesController, 'index'])
+router.post('/fripes', [FripesController, 'store'])

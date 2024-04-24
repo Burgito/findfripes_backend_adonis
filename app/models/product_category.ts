@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
 import Fripe from './fripe.js'
-import { type HasMany } from '@adonisjs/lucid/types/relations'
+import { type ManyToMany } from '@adonisjs/lucid/types/relations'
 
 export default class ProductCategory extends BaseModel {
   @column({ isPrimary: true })
@@ -19,8 +19,8 @@ export default class ProductCategory extends BaseModel {
   @column()
   declare longDescription: string | null
 
-  @hasMany(() => Fripe)
-  declare productCategories: HasMany<typeof Fripe>
+  @manyToMany(() => Fripe)
+  declare productCategories: ManyToMany<typeof Fripe>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

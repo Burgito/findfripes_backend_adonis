@@ -1,10 +1,13 @@
+import AddressesService from '#services/addresses_service';
 import FripesService from '#services/fripes_service';
 import { inject } from '@adonisjs/core';
 import type { HttpContext } from '@adonisjs/core/http'
+import Address from '#models/address';
+import Fripe from '#models/fripe';
 
 @inject()
 export default class FripesController {
-  constructor(protected fripesService: FripesService) { }
+  constructor(protected fripesService: FripesService, protected addressesService: AddressesService) { }
   /**
    * Display a list of resource
    */
@@ -20,7 +23,11 @@ export default class FripesController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) { }
+  async store({ request }: HttpContext) {
+    // this.addressesService.createNewAddress(request.body().only('address') as Address)
+    console.log(request);
+    this.fripesService.createNewFripe(request.only(['fripe']).fripe)
+  }
 
   /**
    * Show individual record
