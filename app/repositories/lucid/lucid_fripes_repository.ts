@@ -4,11 +4,12 @@ import FripesRepositoryInterface from "../interfaces/fripes_repository_interface
 export default class LucidFripesRepository implements FripesRepositoryInterface {
 
     async all(): Promise<Fripe[]> {
-        return await Fripe.all();
+        const fripes = await Fripe.query().preload('address');
+        return fripes;
     }
 
     async one(id: number): Promise<Fripe> {
-        return await Fripe.findOrFail(id);
+        return await Fripe.query().where('id', id).preload('address').preload('comments').firstOrFail();
     }
 
     async create(fripe: Fripe): Promise<Fripe> {

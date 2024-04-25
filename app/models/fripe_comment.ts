@@ -11,6 +11,12 @@ export default class FripeComment extends BaseModel {
   @column()
   declare text: string
 
+  @column()
+  declare fripeId: number
+
+  @column()
+  declare userId: number
+
   @hasOne(() => User)
   declare user: HasOne<typeof User>
 

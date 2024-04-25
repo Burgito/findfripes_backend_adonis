@@ -12,6 +12,7 @@ export default class extends BaseSchema {
       table.string('gps_coordinates').nullable();
 
       table.integer('address_id')
+        .notNullable()
         .unsigned()
         .references('addresses.id')
         .onDelete('RESTRICT')

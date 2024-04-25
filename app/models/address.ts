@@ -23,6 +23,9 @@ export default class Address extends BaseModel {
   @column()
   declare country: string
 
+  @column()
+  declare fripeId: number
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
