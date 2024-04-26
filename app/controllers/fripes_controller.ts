@@ -26,9 +26,10 @@ export default class FripesController {
       .createNewFripe(request.only(['fripe']).fripe, request.only(['address']).address)
   }
 
-  async comment({ params, request }: HttpContext) {
+  async comment({ auth, params, request }: HttpContext) {
+    const user = auth.getUserOrFail();
     await this.fripesService.
-      comment(params.id, request.only(['comment']).comment)
+      comment(user.id, params.id, request.only(['comment']).comment)
   }
 
   /**
@@ -42,11 +43,6 @@ export default class FripesController {
    * Edit individual record
    */
   async edit({ params }: HttpContext) { }
-
-  /**
-   * Handle form submission for the edit action
-   */
-  async update({ params, request }: HttpContext) { }
 
   /**
    * Delete record

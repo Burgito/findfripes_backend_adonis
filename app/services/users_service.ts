@@ -21,9 +21,9 @@ export default class UsersService {
         return { user: user, token: await User.accessTokens.create(user) };
     }
 
-    async logoutUser(user: User, token: string | number | BigInt | undefined) {
-        if (!token) return false;
-        await User.accessTokens.delete(user, token)
+    async logoutUser(user: User) {
+        if (!user.currentAccessToken || !user.currentAccessToken.identifier) return false;
+        await User.accessTokens.delete(user, user.currentAccessToken.identifier)
         return true;
     }
 }

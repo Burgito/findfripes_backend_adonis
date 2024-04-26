@@ -36,7 +36,8 @@ export default class UsersController {
 
     async logout({ auth, response }: HttpContext) {
         const user = auth.getUserOrFail()
-        const token = auth.user?.currentAccessToken.identifier
-        return await this.usersService.logoutUser(user, token) ? response.ok("Logged out") : response.badRequest('Token not found')
+        return await this.usersService.logoutUser(user)
+            ? response.ok("Logged out")
+            : response.badRequest('Token not found')
     }
 }

@@ -28,6 +28,6 @@ router.group(() => {
 router.group(() => {
     router.get('/', [FripesController, 'index'])
     router.get('/:id', [FripesController, 'show'])
-    router.post('/', [FripesController, 'store'])
-    router.post('/:id/comment', [FripesController, 'comment'])
+    router.post('/', [FripesController, 'store']).use(middleware.auth())
+    router.post('/:id/comment', [FripesController, 'comment']).use(middleware.auth())
 }).prefix('fripes')

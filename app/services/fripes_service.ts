@@ -26,10 +26,10 @@ export default class FripesService {
         await createdFripe.related("address").save(createdAddress);
     }
 
-    async comment(fripeId: number, comment: string) {
+    async comment(userId: number, fripeId: number, comment: string) {
         const fripe = await this.fripesRepo.one(fripeId);
         if (!fripe) return false;
 
-        fripe.related('comments').create({ text: comment });
+        fripe.related('comments').create({ text: comment, userId: userId });
     }
 }
