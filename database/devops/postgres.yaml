@@ -8,5 +8,5 @@ services:
       POSTGRES_PASSWORD: UBLIm3C15c0kDWh4tg0t
       POSTGRES_USER: ffpg_back
       POSTGRES_DB: pg-findfripes
-# docker run --name pg-ffbk -e POSTGRES_PASSWORD="$UBLIm3C15c0k?DWh4t?g0t" -e POSTGRES_USER=ffpg_back -e POSTGRES_DB=findfripes -p 5432:5432 -d postgres
+
 # docker compose -f postgres.yaml up -d
