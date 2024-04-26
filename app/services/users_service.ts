@@ -11,8 +11,6 @@ export default class UsersService {
     }
 
     async createUser(user: User) {
-        // TODO check email validity
-        // TODO check password validity
         return this.usersRepo.create(user);
     }
 
@@ -20,6 +18,12 @@ export default class UsersService {
         const user = await User.verifyCredentials(email, password);
         if (!user) return null;
 
-        return await User.accessTokens.create(user);
+        return { user: user, token: await User.accessTokens.create(user) };
+    }
+
+    async logoutUser(user: User, token: string | number | BigInt | undefined) {
+        if (!token) return false;
+        await User.accessTokens.delete(user, token)
+        return true;
     }
 }
