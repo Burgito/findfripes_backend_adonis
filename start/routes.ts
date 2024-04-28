@@ -8,13 +8,9 @@
 */
 
 import FripesController from '#controllers/fripes_controller'
-import HomeController from '#controllers/home_controller'
 import UsersController from '#controllers/users_controller'
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
-
-// Home
-router.get('/', [HomeController, 'index'])
 
 // Users
 router.group(() => {
@@ -26,7 +22,7 @@ router.group(() => {
 
 // Fripes
 router.group(() => {
-    router.get('/', [FripesController, 'index'])
+    router.get('/', [FripesController, 'getBy'])
     router.get('/:id', [FripesController, 'show'])
     router.post('/', [FripesController, 'store']).use(middleware.auth())
     router.post('/:id/comment', [FripesController, 'comment']).use(middleware.auth())

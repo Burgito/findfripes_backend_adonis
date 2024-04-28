@@ -12,6 +12,10 @@ export default class FripesService {
         return await this.fripesRepo.all();
     }
 
+    async getFripesByCity(city: string) {
+        return await this.fripesRepo.allByCity(city);
+    }
+
     async getOneFripe(id: number) {
         return await this.fripesRepo.one(id);
     }

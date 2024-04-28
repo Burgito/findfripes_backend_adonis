@@ -2,9 +2,15 @@ import Fripe from "#models/fripe";
 import FripesRepositoryInterface from "../interfaces/fripes_repository_interface.js";
 
 export default class LucidFripesRepository implements FripesRepositoryInterface {
-
     async all(): Promise<Fripe[]> {
         const fripes = await Fripe.query().preload('address');
+        return fripes;
+    }
+
+    async allByCity(city: string): Promise<Fripe[]> {
+        const fripes = await Fripe.query().whereHas('address', (query) => {
+            query.whereILike('city', city)
+        });
         return fripes;
     }
 
