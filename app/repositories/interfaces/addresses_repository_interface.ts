@@ -9,4 +9,7 @@ export default interface AddressesRepositoryInterface {
 
   /** Create one */
   create(address: Address): Promise<Address>
+
+  citiesLike(city: string): Promise<string[]>
+
 }

@@ -13,4 +13,8 @@ export default class AddressesService {
   async createNewAddress(address: Address) {
     return await this.addressesRepo.create(address)
   }
+
+  async getDistinctCitiesLike(city: string) {
+    return await this.addressesRepo.citiesLike(city);
+  }
 }

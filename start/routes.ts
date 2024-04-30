@@ -11,6 +11,7 @@ const FripesController = () => import('#controllers/fripes_controller')
 const UsersController = () => import('#controllers/users_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+import AddressesController from '#controllers/addresses_controller'
 
 // Users
 router
@@ -21,6 +22,12 @@ router
     router.get('/logout', [UsersController, 'logout']).use(middleware.auth())
   })
   .prefix('users')
+
+  router
+    .group(() => {
+      router.get('/cities', [AddressesController, 'cities'])
+    })
+    .prefix('addresses')
 
 // Fripes
 router
