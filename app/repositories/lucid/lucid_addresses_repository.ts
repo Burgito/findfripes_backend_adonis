@@ -14,7 +14,8 @@ export default class LucidAddressesRepository implements AddressesRepositoryInte
     return await Address.create(address)
   }
 
-  async citiesLike(city: string): Promise<string[]> {
-    return (await Address.query().whereILike('city', city).distinct('city')).map(a => a.city)
+  async citiesLike(city: string): Promise<Address[]> {
+    const adresses = await Address.query().whereILike('city', `${city}%`).distinct('city')
+    return adresses
   }
 }
