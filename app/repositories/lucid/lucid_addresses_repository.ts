@@ -6,6 +6,10 @@ export default class LucidAddressesRepository implements AddressesRepositoryInte
     return await Address.all()
   }
 
+  async allLimitOrderByCity(nb: number) {
+    return await Address.query().limit(nb).orderBy('city')
+  }
+
   async one(id: number): Promise<Address> {
     return await Address.findOrFail(id)
   }

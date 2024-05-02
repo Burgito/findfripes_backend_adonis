@@ -10,6 +10,8 @@ export default class AddressesController {
    */
   async cities({ request }: HttpContext) {
     const city = request.all().city
-    return city ? this.addressesService.getDistinctCitiesLike(city) : []
+    return city
+      ? this.addressesService.getDistinctCitiesLike(city)
+      : this.addressesService.getAllAddressesLimitOrderByCity(30)
   }
 }

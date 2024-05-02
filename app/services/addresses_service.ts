@@ -10,6 +10,10 @@ export default class AddressesService {
     return await this.addressesRepo.all()
   }
 
+  async getAllAddressesLimitOrderByCity(limit: number) {
+    return await this.addressesRepo.allLimitOrderByCity(limit)
+  }
+
   async createNewAddress(address: Address) {
     return await this.addressesRepo.create(address)
   }
