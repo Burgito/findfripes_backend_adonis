@@ -8,6 +8,7 @@ export const FripeFactory = factory
       name: faker.lorem.words(),
       shortDescription: faker.lorem.sentences().slice(255),
       longDescription: faker.lorem.paragraphs(),
+      gpsCoordinates: faker.location.latitude() + ', ' + faker.location.longitude()
     }
   })
   .relation('address', () => AddressFactory)
