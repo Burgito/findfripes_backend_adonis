@@ -4,6 +4,8 @@ import Fripe from './fripe.js'
 import { type BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class FripePicture extends BaseModel {
+  // TODO copy constructor ?
+
   @column({ isPrimary: true })
   declare id: number
 
