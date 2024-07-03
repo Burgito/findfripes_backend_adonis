@@ -11,8 +11,8 @@ export default class FripesService {
     protected addressRepo: LucidAddressesRepository
   ) { }
 
-  async getAllFripes() {
-    return await this.fripesRepo.all()
+  async getAllFripes(limit: number) {
+    return await this.fripesRepo.all(limit)
   }
 
   async getFripesByCity(city: string) {

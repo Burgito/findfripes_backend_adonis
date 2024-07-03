@@ -1,0 +1,9 @@
+{
+  "space-in-brackets": [
+    "error",
+    "always",
+    {
+      "singleValue": false
+    }
+  ]
+}

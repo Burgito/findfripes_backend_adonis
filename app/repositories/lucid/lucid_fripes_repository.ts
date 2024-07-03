@@ -2,8 +2,8 @@ import Fripe from '#models/fripe'
 import FripesRepositoryInterface from '../interfaces/fripes_repository_interface.js'
 
 export default class LucidFripesRepository implements FripesRepositoryInterface {
-  async all(): Promise<Fripe[]> {
-    const fripes = await Fripe.query().preload('address')
+  async all(limit: number): Promise<Fripe[]> {
+    const fripes = await Fripe.query().limit(limit).preload('address')
     return fripes
   }
 
