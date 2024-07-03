@@ -11,11 +11,6 @@ export default class extends BaseSchema {
       table.string('email', 256).notNullable().unique()
       table.string('password').notNullable()
 
-      table.integer('address_id')
-        .unsigned()
-        .references('addresses.id')
-        .onDelete('RESTRICT')
-
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
     })
