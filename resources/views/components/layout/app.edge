@@ -8,16 +8,20 @@
   @if ($slots.meta)
   {{{ await $slots.meta() }}}
   @endif
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @vite(['resources/css/app.scss', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="ff-container">
   <header>
-    header
+    @component('components/layout/header', { })
+
+    @end
   </header>
   {{{ await $slots.main() }}}
   <footer>
-    footer
+    @component('components/layout/footer', { })
+
+    @end
   </footer>
 </body>
 
