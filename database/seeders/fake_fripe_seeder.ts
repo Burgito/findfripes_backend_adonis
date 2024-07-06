@@ -4,12 +4,12 @@ import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
 export default class extends BaseSeeder {
   async run() {
-    const addresses = await AddressFactory.createMany(200)
+    const addresses = await AddressFactory.createMany(2000)
     let addressIndex = 0
     await FripeFactory.tap((row) => {
-      row.address_id = addresses.at(addressIndex)!.id
+      row.addressId = addresses.at(addressIndex)!.id
       addressIndex++
-    }).createMany(200)
+    }).with('pictures', 2).createMany(2000)
     // Write your database queries inside the run method
   }
 }

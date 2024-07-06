@@ -7,7 +7,7 @@ export const AddressFactory = factory
     return {
       line1: faker.location.streetAddress(),
       city: faker.location.city(),
-      country: faker.location.country(),
+      country: 'France',
       postCode: faker.location.zipCode(),
     }
   })

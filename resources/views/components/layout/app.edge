@@ -9,19 +9,19 @@
   {{{ await $slots.meta() }}}
   @endif
   @vite(['resources/css/app.scss', 'resources/js/app.js'])
+
+  <script src="https://kit.fontawesome.com/e34a7101f6.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="ff-container">
-  <header>
-    @component('components/layout/header', { })
-
-    @end
+  <header class="ff-header-container">
+    @!component('components/layout/header', { })
   </header>
-  {{{ await $slots.main() }}}
+  <div class="ff-content">
+    {{{ await $slots.main() }}}
+  </div>
   <footer>
-    @component('components/layout/footer', { })
-
-    @end
+    @!component('components/layout/footer', { })
   </footer>
 </body>
 

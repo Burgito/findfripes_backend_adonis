@@ -3,7 +3,7 @@ import FripesRepositoryInterface from '../interfaces/fripes_repository_interface
 
 export default class LucidFripesRepository implements FripesRepositoryInterface {
   async all(limit: number): Promise<Fripe[]> {
-    const fripes = await Fripe.query().limit(limit).preload('address')
+    const fripes = await Fripe.query().preload('pictures').limit(limit)
     return fripes
   }
 
@@ -15,7 +15,7 @@ export default class LucidFripesRepository implements FripesRepositoryInterface 
   }
 
   async one(id: number): Promise<Fripe> {
-    return await Fripe.query().where('id', id).preload('address').preload('comments').firstOrFail()
+    return await Fripe.query().where('id', id).preload('pictures').preload('comments').firstOrFail()
   }
 
   async create(fripe: Fripe): Promise<Fripe> {

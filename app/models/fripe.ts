@@ -23,12 +23,9 @@ export default class Fripe extends BaseModel {
   declare gpsCoordinates: string | null
 
   @column()
-  declare address_id: number
+  declare addressId: number
 
-  @hasOne(() => Address, {
-    localKey: 'address_id',
-    foreignKey: 'id',
-  })
+  @hasOne(() => Address)
   declare address: HasOne<typeof Address>
 
   @manyToMany(() => ProductCategory)

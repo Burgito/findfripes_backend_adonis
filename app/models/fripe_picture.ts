@@ -15,6 +15,9 @@ export default class FripePicture extends BaseModel {
   @column()
   declare shortDescription: string
 
+  @column()
+  declare fripeId: string;
+
   @belongsTo(() => Fripe)
   declare fripe: BelongsTo<typeof Fripe>
 

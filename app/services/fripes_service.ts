@@ -26,7 +26,7 @@ export default class FripesService {
   async createNewFripe(fripe: Fripe, address: Address) {
     const createdAddress = await this.addressRepo.create(address)
 
-    fripe.address_id = createdAddress.id
+    fripe.addressId = createdAddress.id
     const createdFripe = await this.fripesRepo.create(fripe)
     if (!createdFripe) return
 

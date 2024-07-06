@@ -10,12 +10,6 @@ export default class FripesController {
     protected addressesService: AddressesService
   ) { }
 
-  async getBy({ request }: HttpContext) {
-    if (request.all().city) return await this.fripesService.getFripesByCity(request.all().city)
-    // TODO handle by name
-    return await this.fripesService.getAllFripes()
-  }
-
   /**
    * Handle form submission for the create action
    */
@@ -34,7 +28,8 @@ export default class FripesController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {
-    return await this.fripesService.getOneFripe(params.id)
+  async show({ params, view }: HttpContext) {
+    const fripe = await this.fripesService.getOneFripe(params.id)
+    return view.render('pages/fripe', { 'fripe': fripe })
   }
 }

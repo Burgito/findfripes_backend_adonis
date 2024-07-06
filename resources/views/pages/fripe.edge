@@ -1,0 +1,21 @@
+@layout.app({ title: "Fripes.fr: trouve la fripe la plus proche de toi!" })
+@slot('meta')
+<meta name="description" content="Page d'accueil de l'annuaire français de recherche des friperies">
+@endslot
+<div class="ff-fripe-details">
+    @each(picture in fripe.pictures)
+    <img src={{picture.filename}} alt="" />
+    @end
+    <div>
+        <div>
+            {{fripe.name}}
+        </div>
+        <div>
+            {{fripe.shortDescription}}
+        </div>
+        <div>
+            {{fripe.longDescription}}
+        </div>
+    </div>
+</div>
+@end
