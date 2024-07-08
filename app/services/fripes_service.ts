@@ -11,12 +11,12 @@ export default class FripesService {
     protected addressRepo: LucidAddressesRepository
   ) { }
 
-  async getAllFripes(limit: number) {
-    return await this.fripesRepo.all(limit)
+  async getAllFripes(page: number, limit: number) {
+    return await this.fripesRepo.all(page, limit)
   }
 
-  async getFripesByCity(city: string) {
-    return await this.fripesRepo.allByCity(city)
+  async getFripesByCity(page: number, limit: number, city: string) {
+    return await this.fripesRepo.allByCity(page, limit, city)
   }
 
   async getOneFripe(id: number) {

@@ -1,13 +1,12 @@
 import Fripe from '#models/fripe'
+import { ModelPaginatorContract } from '@adonisjs/lucid/types/model'
 
 export default interface FripesRepositoryInterface {
   /** Retrieve all */
-  // TODO add limit to all
-  // TODO get one by id
-  all(limit: number): Promise<Fripe[]>
+  all(page: number, limit: number): Promise<ModelPaginatorContract<Fripe>>
 
   /** Retrieve fripes by city */
-  allByCity(city: string): Promise<Fripe[]>
+  allByCity(page: number, limit: number, city: string): Promise<Fripe[]>
 
   /** Retrieve one by id */
   one(id: number): Promise<Fripe>

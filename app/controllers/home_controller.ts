@@ -10,8 +10,12 @@ export default class HomeController {
     protected fripesService: FripesService
   ) { }
 
-  async index({ view }: HttpContext) {
-    const fripes = await this.fripesService.getAllFripes(30)
+  async index({ request, view }: HttpContext) {
+    const page = request.input('page', 1)
+    const limit = 25
+
+    const fripes = await this.fripesService.getAllFripes(page, limit)
+    fripes.baseUrl('/')
     return view.render('pages/home', { fripes: fripes })
   }
 }

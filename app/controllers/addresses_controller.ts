@@ -8,10 +8,11 @@ export default class AddressesController {
   /**
    * Display form to create a new record
    */
-  async cities({ request }: HttpContext) {
+  async cities({ request, view }: HttpContext) {
     const city = request.all().city
-    return city
+    const cities = city
       ? this.addressesService.getDistinctCitiesLike(city)
       : this.addressesService.getAllAddressesLimitOrderByCity(30)
+    return view.render('fragments/cities', cities)
   }
 }

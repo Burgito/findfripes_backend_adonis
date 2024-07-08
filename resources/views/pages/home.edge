@@ -5,4 +5,14 @@
 
 @!component('components/search', { })
 @!component('components/fripes-list', {fripes: fripes})
+
+
+<div>
+    @each(anchor in fripes.getUrlsForRange(1, fripes.lastPage))
+    <a href="{{ anchor.url }}">
+        {{ anchor.page }}
+    </a>
+    @endeach
+</div>
+
 @end
