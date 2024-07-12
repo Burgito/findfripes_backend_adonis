@@ -1,2 +1,2 @@
-import 'unpoly'
+import 'unpoly/unpoly'
 import 'unpoly/unpoly.css'

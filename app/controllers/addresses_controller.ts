@@ -10,9 +10,9 @@ export default class AddressesController {
    */
   async cities({ request, view }: HttpContext) {
     const city = request.all().city
-    const cities = city
-      ? this.addressesService.getDistinctCitiesLike(city)
-      : this.addressesService.getAllAddressesLimitOrderByCity(30)
-    return view.render('fragments/cities', cities)
+    const addresses = city
+      ? (await this.addressesService.getDistinctCitiesLike(city.trim()))
+      : (await this.addressesService.getAllAddressesLimitOrderByCity(30))
+    return view.render('partials/cities', { 'addresses': addresses })
   }
 }
